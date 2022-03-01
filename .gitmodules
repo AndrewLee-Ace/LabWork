@@ -1,6 +1,3 @@
 [submodule "data_lab1/d66a59b6db4e59c16efd4c42ad411f8e"]
 	path = data_lab1/d66a59b6db4e59c16efd4c42ad411f8e
 	url = https://gist.github.com/katychuang/d66a59b6db4e59c16efd4c42ad411f8e
-[submodule "data_lab2"]
-	path = data_lab2
-	url = https://github.com/AndrewLee-Ace/LabWork
