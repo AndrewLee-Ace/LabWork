@@ -2,7 +2,7 @@
  	path = data_lab2
  	url = https://github.com/AndrewLee-Ace/LabWork
 [submodule "data_lab1"]
-	path = data_labs
+	path = data_lab1
 	url = https://gist.github.com/katychuang/d66a59b6db4e59c16efd4c42ad411f8e
 [submodule "labs/data_lab"]
 	path = labs/data_lab
