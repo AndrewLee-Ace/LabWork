@@ -7,11 +7,12 @@ const db = new sql.Database('info.sql');
 
 app.use(express.json());
 
-app.get('/data/all', (req, res) => {
+//api endpoint retrieves all the data and returns all player id, name, age, and team in data set 
+app.get('api/data/all', (req, res) => {
     var results = [];
   
     db.serialize(function(){
-        db.each('SELECT player_id AS id, name, age, team FROM tbl LIMIT 25', function(err, row){
+        db.each('SELECT player_id AS id, name, age, team FROM tbl', function(err, row){
             results.push({id: row.id, name: row.name, age: row.age, team: row.team});
         },function(){
             res.send({'results': results});
@@ -19,7 +20,8 @@ app.get('/data/all', (req, res) => {
     });
 });
 
-app.get('/data/:num', (req,res) =>{
+//end point retrieves all the data and returns a specific row, specified by the id parameter entered
+app.get('api/data/:num', (req,res) =>{
     const id = req.params.num;
     var results = [];
 
@@ -32,7 +34,8 @@ app.get('/data/:num', (req,res) =>{
     });
 });
 
-app.post('/data/post/:num/:val', (req,res) => {
+//updates data based on the id which is selected by the num parameter and then properly updated to the value in the val parameter
+app.post('api/data/post/:num/:val', (req,res) => {
     const id = req.params.num ||'';
     const value = req.params.val||'';
 
@@ -48,7 +51,8 @@ app.post('/data/post/:num/:val', (req,res) => {
     });
 });
 
-app.put('/data/new/:id/:name/:nation/:pos/:overall/:age/:hits/:pot/:team'), (req, res) =>{
+//inserts into data set a new entry with all parameters satisfying the entry point of the table
+app.put('api/data/new/:id/:name/:nation/:pos/:overall/:age/:hits/:pot/:team'), (req, res) =>{
     db.serialize(function(){
         db.each('INSERT INTO tbl (player_id, name, nationlity, position, overall, age, hits, potential, team VALUES ' + req.params.id + ', ' + req.params.name + ', '+ req.params.nation + ', '+ req.params.pos + ', '+ req.params.overall + ', '+ req.params.age + ', ' + req.params.hits + ', '+ req.params.pot + ', '+ req.params.team, function(){
             res.send('player added!');
