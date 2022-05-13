@@ -8,7 +8,7 @@ const db = new sql.Database('info.sql');
 app.use(express.json());
 
 //api endpoint retrieves all the data and returns all player id, name, age, and team in data set 
-app.get('api/data/all', (req, res) => {
+app.get('api/data/', (req, res) => {
     var results = [];
   
     db.serialize(function(){
